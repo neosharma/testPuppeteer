@@ -1,0 +1,2024 @@
+Payload: {
+  "Resources" : {
+    "Assessments" : {
+      "discrColumnType" : false,
+      "attributes" : [ {
+        "name" : "AssessmentId",
+        "type" : "integer",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 18,
+        "hasDefaultValueExpression" : true,
+        "properties" : {
+          "FIELDORDER" : "1.0"
+        }
+      }, {
+        "name" : "BusinessUnit",
+        "type" : "integer",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "inCreate",
+        "precision" : 18,
+        "title" : "Business Unit",
+        "properties" : {
+          "FIELDORDER" : "2.0"
+        }
+      }, {
+        "name" : "AssessTemplateId",
+        "type" : "integer",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "inCreate",
+        "precision" : 18,
+        "title" : "Template Name",
+        "controlType" : "choice",
+        "properties" : {
+          "FIELDORDER" : "3.0"
+        },
+        "lov" : {
+          "childRef" : "AssessmentTemplateVA",
+          "attributeMap" : [ {
+            "source" : "AssessTemplateId",
+            "target" : "AssessTemplateId"
+          }, {
+            "source" : "AssessedObjTypeCode",
+            "target" : "AssessedObjTypeCode",
+            "derived" : true
+          }, {
+            "source" : "RelatedObjTypeCode",
+            "target" : "RelatedObjTypeCode",
+            "derived" : true
+          }, {
+            "source" : "Name",
+            "target" : "TemplateName",
+            "derived" : true
+          } ],
+          "displayAttributes" : [ "Name" ],
+          "lovResourcePath" : [ {
+            "resource" : "crmBusinessUnits"
+          }, {
+            "resource" : "assessmentTemplates",
+            "filter" : "?finder=AssessmentTemplateFinder"
+          } ]
+        }
+      }, {
+        "name" : "Name",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 255,
+        "title" : "Name",
+        "maxLength" : "255",
+        "properties" : {
+          "DISPLAYWIDTH" : "20",
+          "FIELDORDER" : "4.0"
+        }
+      }, {
+        "name" : "AssessedLanguage",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 4,
+        "defaultValue" : "US",
+        "maxLength" : "4",
+        "properties" : {
+          "FIELDORDER" : "5.0"
+        }
+      }, {
+        "name" : "StatusCode",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 30,
+        "defaultValue" : "INCOMPLETE",
+        "title" : "Status",
+        "controlType" : "choice",
+        "maxLength" : "30",
+        "properties" : {
+          "FIELDORDER" : "6.0"
+        },
+        "lov" : {
+          "childRef" : "LookupPVO1",
+          "attributeMap" : [ {
+            "source" : "LookupCode",
+            "target" : "StatusCode"
+          } ],
+          "displayAttributes" : [ "Meaning" ]
+        }
+      }, {
+        "name" : "AssessmentScore",
+        "type" : "integer",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "inCreate",
+        "precision" : 10,
+        "defaultValue" : 0,
+        "title" : "Score",
+        "properties" : {
+          "FIELDORDER" : "7.0"
+        }
+      }, {
+        "name" : "AssessedObjectId",
+        "type" : "integer",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "precision" : 18,
+        "properties" : {
+          "FIELDORDER" : "9.0"
+        }
+      }, {
+        "name" : "AssessedObjTypeCode",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "inCreate",
+        "precision" : 30,
+        "maxLength" : "30",
+        "properties" : {
+          "FIELDORDER" : "13.0"
+        }
+      }, {
+        "name" : "LastUpdateDate",
+        "type" : "datetime",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "title" : "Last Updated Date",
+        "properties" : {
+          "FIELDORDER" : "20.0"
+        }
+      }, {
+        "name" : "CreatedBy",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 64,
+        "title" : "Created By",
+        "maxLength" : "64",
+        "properties" : {
+          "FIELDORDER" : "21.0"
+        }
+      }, {
+        "name" : "LastUpdatedBy",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : true,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "precision" : 64,
+        "title" : "Last Updated By",
+        "maxLength" : "64",
+        "properties" : {
+          "DISPLAYWIDTH" : "20",
+          "FIELDORDER" : "22.0"
+        }
+      }, {
+        "name" : "TemplateName",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "inCreate",
+        "hasDefaultValueExpression" : true,
+        "title" : "Template",
+        "maxLength" : "0",
+        "properties" : {
+          "FIELDORDER" : "0.0"
+        }
+      }, {
+        "name" : "TemplateType",
+        "type" : "string",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "inCreate",
+        "hasDefaultValueExpression" : true,
+        "title" : "Template Type",
+        "controlType" : "choice",
+        "maxLength" : "0",
+        "properties" : {
+          "FIELDORDER" : "28.0"
+        },
+        "lov" : {
+          "childRef" : "CommonObjectsMappingPVO1",
+          "attributeMap" : [ {
+            "source" : "Description1",
+            "target" : "TemplateType"
+          }, {
+            "source" : "SourceObjectCode",
+            "target" : "AssessedObjTypeCode",
+            "derived" : true
+          }, {
+            "source" : "MappedObjectCode",
+            "target" : "RelatedObjTypeCode",
+            "derived" : true
+          } ],
+          "displayAttributes" : [ "TemplateTypeDisplay" ]
+        }
+      }, {
+        "name" : "TotalQuestions",
+        "type" : "number",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "hasDefaultValueExpression" : true,
+        "properties" : {
+          "FIELDORDER" : "32.0"
+        }
+      }, {
+        "name" : "TotalAnswered",
+        "type" : "number",
+        "updatable" : true,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "always",
+        "hasDefaultValueExpression" : true,
+        "properties" : {
+          "FIELDORDER" : "33.0"
+        }
+      }, {
+        "name" : "StatusFuse",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : true,
+        "allowChanges" : "never",
+        "hasDefaultValueExpression" : true,
+        "title" : "Status",
+        "maxLength" : "0",
+        "properties" : {
+          "FIELDORDER" : "34.0"
+        },
+        "dependencies" : [ "StatusCode", "TotalAnswered", "TotalQuestions" ]
+      }, {
+        "name" : "RatingTerm",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "maxLength" : "0",
+        "properties" : {
+          "FIELDORDER" : "35.0"
+        }
+      }, {
+        "name" : "RatingFeedback",
+        "type" : "string",
+        "updatable" : false,
+        "mandatory" : false,
+        "queryable" : false,
+        "allowChanges" : "never",
+        "maxLength" : "0",
+        "properties" : {
+          "FIELDORDER" : "36.0"
+        }
+      } ],
+      "collection" : {
+        "rangeSize" : 25,
+        "finders" : [ {
+          "name" : "PrimaryKey",
+          "attributes" : [ {
+            "name" : "AssessmentId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 18,
+            "hasDefaultValueExpression" : true,
+            "properties" : {
+              "FIELDORDER" : "1.0"
+            }
+          } ]
+        } ],
+        "links" : [ {
+          "rel" : "self",
+          "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments",
+          "name" : "self",
+          "kind" : "collection"
+        } ],
+        "actions" : [ {
+          "name" : "get",
+          "method" : "GET",
+          "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+        }, {
+          "name" : "create",
+          "method" : "POST",
+          "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+          "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+        }, {
+          "name" : "upsert",
+          "method" : "POST",
+          "header" : "Upsert-Mode=true",
+          "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+          "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+        } ]
+      },
+      "item" : {
+        "links" : [ {
+          "rel" : "lov",
+          "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/lov/AssessmentTemplateVA",
+          "name" : "AssessmentTemplateVA",
+          "kind" : "collection"
+        }, {
+          "rel" : "lov",
+          "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/lov/LookupPVO1",
+          "name" : "LookupPVO1",
+          "kind" : "collection"
+        }, {
+          "rel" : "lov",
+          "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/lov/CommonObjectsMappingPVO1",
+          "name" : "CommonObjectsMappingPVO1",
+          "kind" : "collection"
+        }, {
+          "rel" : "child",
+          "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups",
+          "name" : "AssessAnswerGroups",
+          "kind" : "collection",
+          "cardinality" : {
+            "value" : "1 to *",
+            "sourceAttributes" : "AssessmentId",
+            "destinationAttributes" : "AssessmentId"
+          }
+        }, {
+          "rel" : "self",
+          "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}",
+          "name" : "self",
+          "kind" : "item"
+        }, {
+          "rel" : "parent",
+          "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199",
+          "name" : "parent",
+          "kind" : "item"
+        }, {
+          "rel" : "canonical",
+          "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}",
+          "name" : "canonical",
+          "kind" : "item"
+        } ],
+        "actions" : [ {
+          "name" : "get",
+          "method" : "GET",
+          "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+        }, {
+          "name" : "update",
+          "method" : "PATCH",
+          "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+          "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+        }, {
+          "name" : "delete",
+          "method" : "DELETE"
+        } ]
+      },
+      "children" : {
+        "AssessAnswerGroups" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "AssessAnswerGroupId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 18,
+            "hasDefaultValueExpression" : true
+          }, {
+            "name" : "AssessmentId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 18
+          }, {
+            "name" : "AttributeGroupId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "inCreate",
+            "precision" : 18
+          }, {
+            "name" : "Name",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "hasDefaultValueExpression" : true
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "AssessAnswerGroupId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "precision" : 18,
+                "hasDefaultValueExpression" : true
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "child",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer",
+              "name" : "AssessmentAnswer",
+              "kind" : "collection",
+              "cardinality" : {
+                "value" : "1 to *",
+                "sourceAttributes" : "AssessmentId, AttributeGroupId",
+                "destinationAttributes" : "AssessmentId, AttributeGroupId"
+              }
+            }, {
+              "rel" : "self",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "children" : {
+            "AssessmentAnswer" : {
+              "discrColumnType" : false,
+              "attributes" : [ {
+                "name" : "AssessmentId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "inCreate",
+                "precision" : 18
+              }, {
+                "name" : "AnswerId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "precision" : 18,
+                "hasDefaultValueExpression" : true
+              }, {
+                "name" : "AttributeGroupId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "inCreate",
+                "precision" : 18,
+                "title" : "Question Group",
+                "controlType" : "choice",
+                "lov" : {
+                  "childRef" : "AssessmentAttributeGroupVO1",
+                  "attributeMap" : [ {
+                    "source" : "AttributeGroupId",
+                    "target" : "AttributeGroupId"
+                  } ],
+                  "displayAttributes" : [ "Name" ]
+                }
+              }, {
+                "name" : "AttributeId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "inCreate",
+                "precision" : 18,
+                "title" : "Question",
+                "controlType" : "choice",
+                "lov" : {
+                  "childRef" : "AssessmentAttributeVO1",
+                  "attributeMap" : [ {
+                    "source" : "AttributeId",
+                    "target" : "AttributeId"
+                  } ],
+                  "displayAttributes" : [ "AttributeName" ]
+                }
+              }, {
+                "name" : "AttributeValueId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "precision" : 18,
+                "title" : "Response",
+                "controlType" : "choice",
+                "lov" : {
+                  "childRef" : "AssessAttributeValueVO1",
+                  "attributeMap" : [ {
+                    "source" : "AttributeValueId",
+                    "target" : "AttributeValueId"
+                  }, {
+                    "source" : "FreeformTextRow",
+                    "target" : "FreeformTextRow",
+                    "derived" : true
+                  } ],
+                  "displayAttributes" : [ "ResponseDisplayName" ]
+                }
+              }, {
+                "name" : "Comments",
+                "type" : "string",
+                "updatable" : true,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "precision" : 1500,
+                "title" : "Comments",
+                "maxLength" : "1500"
+              }, {
+                "name" : "AttributeName",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 500
+              }, {
+                "name" : "Answered",
+                "type" : "string",
+                "updatable" : true,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "hasDefaultValueExpression" : true,
+                "dependencies" : [ "AttributeValueId", "Comments", "FreeformTextRow" ]
+              }, {
+                "name" : "HasComments",
+                "type" : "string",
+                "updatable" : true,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "always",
+                "hasDefaultValueExpression" : true,
+                "dependencies" : [ "Comments" ]
+              }, {
+                "name" : "ResponseValue",
+                "type" : "string",
+                "updatable" : false,
+                "mandatory" : false,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "title" : "Response",
+                "maxLength" : "0"
+              } ],
+              "collection" : {
+                "rangeSize" : 0,
+                "finders" : [ {
+                  "name" : "PrimaryKey",
+                  "attributes" : [ {
+                    "name" : "AnswerId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 18,
+                    "hasDefaultValueExpression" : true
+                  } ]
+                } ],
+                "links" : [ {
+                  "rel" : "self",
+                  "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer",
+                  "name" : "self",
+                  "kind" : "collection"
+                } ],
+                "actions" : [ {
+                  "name" : "get",
+                  "method" : "GET",
+                  "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+                } ]
+              },
+              "item" : {
+                "links" : [ {
+                  "rel" : "lov",
+                  "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/lov/AssessmentAttributeGroupVO1",
+                  "name" : "AssessmentAttributeGroupVO1",
+                  "kind" : "collection"
+                }, {
+                  "rel" : "lov",
+                  "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/lov/AssessmentAttributeVO1",
+                  "name" : "AssessmentAttributeVO1",
+                  "kind" : "collection"
+                }, {
+                  "rel" : "lov",
+                  "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/lov/AssessAttributeValueVO1",
+                  "name" : "AssessAttributeValueVO1",
+                  "kind" : "collection"
+                }, {
+                  "rel" : "self",
+                  "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}",
+                  "name" : "self",
+                  "kind" : "item"
+                }, {
+                  "rel" : "parent",
+                  "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}",
+                  "name" : "parent",
+                  "kind" : "item"
+                }, {
+                  "rel" : "canonical",
+                  "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}",
+                  "name" : "canonical",
+                  "kind" : "item"
+                } ],
+                "actions" : [ {
+                  "name" : "get",
+                  "method" : "GET",
+                  "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+                }, {
+                  "name" : "update",
+                  "method" : "PATCH",
+                  "requestType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ],
+                  "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+                } ]
+              },
+              "children" : {
+                "AssessAttributeValueVO1" : {
+                  "discrColumnType" : false,
+                  "attributes" : [ {
+                    "name" : "AttributeValueId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 18,
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "AttributeId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 18
+                  }, {
+                    "name" : "AttributeValue",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 255,
+                    "title" : "Response",
+                    "maxLength" : "255",
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "SequenceNumber",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 10,
+                    "hasDefaultValueExpression" : true,
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "AttributeValueScore",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 10,
+                    "defaultValue" : 0,
+                    "title" : "Score",
+                    "properties" : {
+                      "CopyAllowed" : "true",
+                      "DISPLAYWIDTH" : "50"
+                    }
+                  }, {
+                    "name" : "AssessRatingId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 18,
+                    "title" : "Rating",
+                    "controlType" : "choice",
+                    "properties" : {
+                      "CopyAllowed" : "true",
+                      "DISPLAYWIDTH" : "50"
+                    },
+                    "lov" : {
+                      "childRef" : "AssessmentRatingVO1",
+                      "attributeMap" : [ {
+                        "source" : "AssessRatingId",
+                        "target" : "AssessRatingId"
+                      } ],
+                      "displayAttributes" : [ "RatingTerm" ]
+                    }
+                  }, {
+                    "name" : "NormalizedScore",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 3,
+                    "defaultValue" : 0,
+                    "title" : "Normalized Score",
+                    "properties" : {
+                      "CopyAllowed" : "true",
+                      "DISPLAYWIDTH" : "50"
+                    }
+                  }, {
+                    "name" : "DeletedFlag",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 1,
+                    "maxLength" : "1",
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "DescText",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 500,
+                    "title" : "Description",
+                    "maxLength" : "500",
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "FreeformTextRow",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 1,
+                    "maxLength" : "1",
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "ResponseDisplayName",
+                    "type" : "string",
+                    "updatable" : false,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "AttributeValueNumber",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 64,
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "AssessRatingNumber",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "inCreate",
+                    "precision" : 64,
+                    "hasDefaultValueExpression" : true,
+                    "controlType" : "choice",
+                    "maxLength" : "64",
+                    "lov" : {
+                      "childRef" : "AssessmentRatingVVA",
+                      "attributeMap" : [ {
+                        "source" : "AssessRatingNumber",
+                        "target" : "AssessRatingNumber"
+                      }, {
+                        "source" : "AssessRatingId",
+                        "target" : "AssessRatingId",
+                        "derived" : true
+                      } ],
+                      "displayAttributes" : [ "AssessRatingNumber", "AssessRatingId" ]
+                    }
+                  }, {
+                    "name" : "AssessRatingId1",
+                    "type" : "integer",
+                    "updatable" : false,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 18,
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "AssessTemplateId",
+                    "type" : "integer",
+                    "updatable" : false,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 18
+                  }, {
+                    "name" : "DeletedFlag1",
+                    "type" : "string",
+                    "updatable" : false,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 1
+                  }, {
+                    "name" : "DescText1",
+                    "type" : "string",
+                    "updatable" : false,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 500
+                  }, {
+                    "name" : "RatingTerm",
+                    "type" : "string",
+                    "updatable" : false,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 100
+                  }, {
+                    "name" : "SequenceNumber1",
+                    "type" : "integer",
+                    "updatable" : false,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "precision" : 5,
+                    "hasDefaultValueExpression" : true
+                  } ],
+                  "collection" : {
+                    "rangeSize" : 0,
+                    "finders" : [ {
+                      "name" : "AttributeValueAltKey",
+                      "attributes" : [ {
+                        "name" : "AssessRatingNumber",
+                        "type" : "string",
+                        "updatable" : true,
+                        "mandatory" : false,
+                        "queryable" : true,
+                        "allowChanges" : "inCreate",
+                        "precision" : 64,
+                        "hasDefaultValueExpression" : true,
+                        "controlType" : "choice",
+                        "maxLength" : "64",
+                        "lov" : {
+                          "childRef" : "AssessmentRatingVVA",
+                          "attributeMap" : [ {
+                            "source" : "AssessRatingNumber",
+                            "target" : "AssessRatingNumber"
+                          }, {
+                            "source" : "AssessRatingId",
+                            "target" : "AssessRatingId",
+                            "derived" : true
+                          } ],
+                          "displayAttributes" : [ "AssessRatingNumber", "AssessRatingId" ]
+                        }
+                      }, {
+                        "name" : "AssessTemplateId",
+                        "type" : "integer",
+                        "updatable" : true,
+                        "mandatory" : true,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 18
+                      }, {
+                        "name" : "AttributeId",
+                        "type" : "integer",
+                        "updatable" : true,
+                        "mandatory" : true,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 18
+                      }, {
+                        "name" : "AttributeValueNumber",
+                        "type" : "string",
+                        "updatable" : true,
+                        "mandatory" : false,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 64,
+                        "hasDefaultValueExpression" : true
+                      } ]
+                    }, {
+                      "name" : "PrimaryKey",
+                      "attributes" : [ {
+                        "name" : "AttributeValueId",
+                        "type" : "integer",
+                        "updatable" : true,
+                        "mandatory" : true,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 18,
+                        "hasDefaultValueExpression" : true
+                      } ]
+                    } ],
+                    "links" : [ {
+                      "rel" : "self",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessAttributeValueVO1",
+                      "name" : "self",
+                      "kind" : "collection"
+                    } ],
+                    "actions" : [ {
+                      "name" : "get",
+                      "method" : "GET",
+                      "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+                    } ]
+                  },
+                  "item" : {
+                    "links" : [ {
+                      "rel" : "self",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessAttributeValueVO1/{id}",
+                      "name" : "self",
+                      "kind" : "item"
+                    }, {
+                      "rel" : "parent",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}",
+                      "name" : "parent",
+                      "kind" : "item"
+                    }, {
+                      "rel" : "canonical",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessAttributeValueVO1/{id}",
+                      "name" : "canonical",
+                      "kind" : "item"
+                    } ],
+                    "actions" : [ {
+                      "name" : "get",
+                      "method" : "GET",
+                      "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+                    } ]
+                  },
+                  "links" : [ {
+                    "rel" : "self",
+                    "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessAttributeValueVO1/describe",
+                    "name" : "self",
+                    "kind" : "describe"
+                  }, {
+                    "rel" : "canonical",
+                    "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessAttributeValueVO1/describe",
+                    "name" : "canonical",
+                    "kind" : "describe"
+                  } ]
+                },
+                "AssessmentAttributeGroupVO1" : {
+                  "discrColumnType" : false,
+                  "attributes" : [ {
+                    "name" : "AttributeGroupId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 18,
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "AssessTemplateId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 18
+                  }, {
+                    "name" : "Name",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 100,
+                    "title" : "Name",
+                    "maxLength" : "100",
+                    "properties" : {
+                      "CopyAllowed" : "true",
+                      "DISPLAYWIDTH" : "50"
+                    }
+                  }, {
+                    "name" : "SequenceNumber",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 5,
+                    "hasDefaultValueExpression" : true,
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "Type",
+                    "type" : "string",
+                    "updatable" : false,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "AttributeGroupNumber",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 64,
+                    "hasDefaultValueExpression" : true
+                  } ],
+                  "collection" : {
+                    "rangeSize" : 0,
+                    "finders" : [ {
+                      "name" : "AttributeGroupAltKey",
+                      "attributes" : [ {
+                        "name" : "AssessTemplateId",
+                        "type" : "integer",
+                        "updatable" : true,
+                        "mandatory" : true,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 18
+                      }, {
+                        "name" : "AttributeGroupNumber",
+                        "type" : "string",
+                        "updatable" : true,
+                        "mandatory" : false,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 64,
+                        "hasDefaultValueExpression" : true
+                      } ]
+                    }, {
+                      "name" : "PrimaryKey",
+                      "attributes" : [ {
+                        "name" : "AttributeGroupId",
+                        "type" : "integer",
+                        "updatable" : true,
+                        "mandatory" : true,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 18,
+                        "hasDefaultValueExpression" : true
+                      } ]
+                    } ],
+                    "links" : [ {
+                      "rel" : "self",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeGroupVO1",
+                      "name" : "self",
+                      "kind" : "collection"
+                    } ],
+                    "actions" : [ {
+                      "name" : "get",
+                      "method" : "GET",
+                      "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+                    } ]
+                  },
+                  "item" : {
+                    "links" : [ {
+                      "rel" : "self",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeGroupVO1/{id}",
+                      "name" : "self",
+                      "kind" : "item"
+                    }, {
+                      "rel" : "parent",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}",
+                      "name" : "parent",
+                      "kind" : "item"
+                    }, {
+                      "rel" : "canonical",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeGroupVO1/{id}",
+                      "name" : "canonical",
+                      "kind" : "item"
+                    } ],
+                    "actions" : [ {
+                      "name" : "get",
+                      "method" : "GET",
+                      "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+                    } ]
+                  },
+                  "links" : [ {
+                    "rel" : "self",
+                    "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeGroupVO1/describe",
+                    "name" : "self",
+                    "kind" : "describe"
+                  }, {
+                    "rel" : "canonical",
+                    "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeGroupVO1/describe",
+                    "name" : "canonical",
+                    "kind" : "describe"
+                  } ]
+                },
+                "AssessmentAttributeVO1" : {
+                  "discrColumnType" : false,
+                  "attributes" : [ {
+                    "name" : "AttributeId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 18,
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "AttributeName",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 500,
+                    "title" : "Question",
+                    "maxLength" : "500",
+                    "properties" : {
+                      "CopyAllowed" : "true",
+                      "DISPLAYWIDTH" : "50"
+                    }
+                  }, {
+                    "name" : "AttributeGroupId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 18,
+                    "title" : "Question Group",
+                    "properties" : {
+                      "DISPLAYWIDTH" : "50"
+                    }
+                  }, {
+                    "name" : "SequenceNumber",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : true,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 10,
+                    "hasDefaultValueExpression" : true,
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "AttributeWeight",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 10,
+                    "title" : "Weight",
+                    "properties" : {
+                      "CopyAllowed" : "true",
+                      "DISPLAYWIDTH" : "50"
+                    }
+                  }, {
+                    "name" : "DeletedFlag",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 1,
+                    "maxLength" : "1",
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "FreeformTextFlag",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 1,
+                    "defaultValue" : "N",
+                    "maxLength" : "1",
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "DescText",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 500,
+                    "title" : "Description",
+                    "maxLength" : "500",
+                    "properties" : {
+                      "CopyAllowed" : "true",
+                      "DISPLAYWIDTH" : "48"
+                    }
+                  }, {
+                    "name" : "AttributePercentage",
+                    "type" : "number",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : false,
+                    "allowChanges" : "always",
+                    "properties" : {
+                      "CopyAllowed" : "true"
+                    }
+                  }, {
+                    "name" : "AssessTemplateId",
+                    "type" : "integer",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "Type",
+                    "type" : "string",
+                    "updatable" : false,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "hasDefaultValueExpression" : true
+                  }, {
+                    "name" : "QuestionDisplayName",
+                    "type" : "string",
+                    "updatable" : false,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "never",
+                    "hasDefaultValueExpression" : true,
+                    "dependencies" : [ "AttributeName", "AttributeWeight" ]
+                  }, {
+                    "name" : "AttributeNumber",
+                    "type" : "string",
+                    "updatable" : true,
+                    "mandatory" : false,
+                    "queryable" : true,
+                    "allowChanges" : "always",
+                    "precision" : 64,
+                    "hasDefaultValueExpression" : true
+                  } ],
+                  "collection" : {
+                    "rangeSize" : 0,
+                    "finders" : [ {
+                      "name" : "AttributeAltKey",
+                      "attributes" : [ {
+                        "name" : "AttributeGroupId",
+                        "type" : "integer",
+                        "updatable" : true,
+                        "mandatory" : true,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 18,
+                        "title" : "Question Group",
+                        "properties" : {
+                          "DISPLAYWIDTH" : "50"
+                        }
+                      }, {
+                        "name" : "AttributeNumber",
+                        "type" : "string",
+                        "updatable" : true,
+                        "mandatory" : false,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 64,
+                        "hasDefaultValueExpression" : true
+                      } ]
+                    }, {
+                      "name" : "PrimaryKey",
+                      "attributes" : [ {
+                        "name" : "AttributeId",
+                        "type" : "integer",
+                        "updatable" : true,
+                        "mandatory" : true,
+                        "queryable" : true,
+                        "allowChanges" : "always",
+                        "precision" : 18,
+                        "hasDefaultValueExpression" : true
+                      } ]
+                    } ],
+                    "links" : [ {
+                      "rel" : "self",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeVO1",
+                      "name" : "self",
+                      "kind" : "collection"
+                    } ],
+                    "actions" : [ {
+                      "name" : "get",
+                      "method" : "GET",
+                      "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+                    } ]
+                  },
+                  "item" : {
+                    "links" : [ {
+                      "rel" : "self",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeVO1/{id}",
+                      "name" : "self",
+                      "kind" : "item"
+                    }, {
+                      "rel" : "parent",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}",
+                      "name" : "parent",
+                      "kind" : "item"
+                    }, {
+                      "rel" : "canonical",
+                      "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeVO1/{id}",
+                      "name" : "canonical",
+                      "kind" : "item"
+                    } ],
+                    "actions" : [ {
+                      "name" : "get",
+                      "method" : "GET",
+                      "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+                    } ]
+                  },
+                  "links" : [ {
+                    "rel" : "self",
+                    "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeVO1/describe",
+                    "name" : "self",
+                    "kind" : "describe"
+                  }, {
+                    "rel" : "canonical",
+                    "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/{id}/child/AssessmentAttributeVO1/describe",
+                    "name" : "canonical",
+                    "kind" : "describe"
+                  } ]
+                }
+              },
+              "links" : [ {
+                "rel" : "self",
+                "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/describe",
+                "name" : "self",
+                "kind" : "describe"
+              }, {
+                "rel" : "canonical",
+                "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/{id}/child/AssessmentAnswer/describe",
+                "name" : "canonical",
+                "kind" : "describe"
+              } ]
+            }
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessAnswerGroups/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "AssessmentTemplateVA" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "AssessTemplateId",
+            "type" : "integer",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "precision" : 18,
+            "hasDefaultValueExpression" : true
+          }, {
+            "name" : "Name",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "always",
+            "precision" : 100,
+            "title" : "Name",
+            "maxLength" : "100",
+            "properties" : {
+              "DISPLAYWIDTH" : "30"
+            }
+          }, {
+            "name" : "AssessedObjTypeCode",
+            "type" : "string",
+            "updatable" : true,
+            "mandatory" : true,
+            "queryable" : false,
+            "allowChanges" : "always",
+            "precision" : 50,
+            "maxLength" : "50"
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "AssessTemplateAltKey",
+              "attributes" : [ ]
+            }, {
+              "name" : "AssessmentTemplateFinder",
+              "title" : "AssessTemplateObjTypeVOCriteria",
+              "attributes" : [ {
+                "name" : "AssessObjType",
+                "type" : "string",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              } ]
+            }, {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "AssessTemplateId",
+                "type" : "integer",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : false,
+                "allowChanges" : "always",
+                "precision" : 18,
+                "hasDefaultValueExpression" : true
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessmentTemplateVA",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessmentTemplateVA/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessmentTemplateVA/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessmentTemplateVA/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/AssessmentTemplateVA/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "CommonObjectsMappingPVO1" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "MappedObjectCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 50,
+            "title" : "Mapped Object",
+            "maxLength" : "50"
+          }, {
+            "name" : "ObjectMappingGuid",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 64,
+            "hasDefaultValueExpression" : true
+          }, {
+            "name" : "MappingEndDate",
+            "type" : "date",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never"
+          }, {
+            "name" : "MappingTypeCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30,
+            "title" : "Mapping Type",
+            "maxLength" : "30"
+          }, {
+            "name" : "ObjectVersionNumber",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 9
+          }, {
+            "name" : "SourceObjectCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 50
+          }, {
+            "name" : "ObjectName",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 240,
+            "title" : "Name",
+            "maxLength" : "240"
+          }, {
+            "name" : "ObjectCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 50,
+            "title" : "Code",
+            "maxLength" : "50"
+          }, {
+            "name" : "ObjectName1",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 240,
+            "title" : "Name",
+            "maxLength" : "240"
+          }, {
+            "name" : "ObjectCode1",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 50,
+            "title" : "Code",
+            "maxLength" : "50"
+          }, {
+            "name" : "Description1",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "title" : "Description",
+            "maxLength" : "0"
+          }, {
+            "name" : "TemplateTypeDisplay",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "dependencies" : [ "Description1", "MappedObjectCode", "SourceObjectCode" ]
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "ObjectMappingGuid",
+                "type" : "string",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "inCreate",
+                "precision" : 64,
+                "hasDefaultValueExpression" : true
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/CommonObjectsMappingPVO1",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/CommonObjectsMappingPVO1/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/CommonObjectsMappingPVO1/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/CommonObjectsMappingPVO1/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/CommonObjectsMappingPVO1/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        },
+        "LookupPVO1" : {
+          "discrColumnType" : false,
+          "attributes" : [ {
+            "name" : "LookupType",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30,
+            "title" : "Lookup Type",
+            "maxLength" : "30",
+            "properties" : {
+              "DISPLAYWIDTH" : "30"
+            }
+          }, {
+            "name" : "LookupCode",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 30,
+            "title" : "Lookup Code",
+            "maxLength" : "30",
+            "properties" : {
+              "DISPLAYWIDTH" : "30"
+            }
+          }, {
+            "name" : "Meaning",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 80,
+            "title" : "Meaning",
+            "maxLength" : "80",
+            "properties" : {
+              "DISPLAYWIDTH" : "50"
+            }
+          }, {
+            "name" : "Description",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 240,
+            "title" : "Description",
+            "maxLength" : "240",
+            "properties" : {
+              "DISPLAYWIDTH" : "50"
+            }
+          }, {
+            "name" : "EnabledFlag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 1,
+            "title" : "Enabled Flag",
+            "maxLength" : "1"
+          }, {
+            "name" : "StartDateActive",
+            "type" : "date",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "title" : "Start Date"
+          }, {
+            "name" : "EndDateActive",
+            "type" : "date",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "title" : "End Date"
+          }, {
+            "name" : "DisplaySequence",
+            "type" : "integer",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 18,
+            "title" : "Display Sequence"
+          }, {
+            "name" : "CreatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 64
+          }, {
+            "name" : "CreationDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never"
+          }, {
+            "name" : "LastUpdateDate",
+            "type" : "datetime",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never"
+          }, {
+            "name" : "LastUpdateLogin",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 32
+          }, {
+            "name" : "LastUpdatedBy",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : true,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 64
+          }, {
+            "name" : "Tag",
+            "type" : "string",
+            "updatable" : false,
+            "mandatory" : false,
+            "queryable" : true,
+            "allowChanges" : "never",
+            "precision" : 150,
+            "title" : "Tag",
+            "maxLength" : "150"
+          } ],
+          "collection" : {
+            "rangeSize" : 0,
+            "finders" : [ {
+              "name" : "LookupTypeActiveEnabledOrBindCodeFinder",
+              "title" : "ByLookupTypeActiveEnabledOrBindCodeFinder",
+              "attributes" : [ {
+                "name" : "BindCurrentDate",
+                "type" : "date",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              }, {
+                "name" : "BindLookupCode",
+                "type" : "string",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              }, {
+                "name" : "BindLookupType",
+                "type" : "string",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              } ]
+            }, {
+              "name" : "LookupTypeFinder",
+              "title" : "ByLookupTypeFinder",
+              "attributes" : [ {
+                "name" : "BindLookupType",
+                "type" : "string",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              } ]
+            }, {
+              "name" : "LookupTypeIsActiveEnabledFinder",
+              "title" : "ByLookupTypeIsActiveEnabledFinder",
+              "attributes" : [ {
+                "name" : "BindCurrentDate",
+                "type" : "date",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              }, {
+                "name" : "BindLookupType",
+                "type" : "string",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              } ]
+            }, {
+              "name" : "LookupTypeIsActiveFinder",
+              "title" : "ByLookupTypeIsActiveFinder",
+              "attributes" : [ {
+                "name" : "BindCurrentDate",
+                "type" : "date",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              }, {
+                "name" : "BindLookupType",
+                "type" : "string",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              } ]
+            }, {
+              "name" : "LookupTypeIsEnabledFinder",
+              "title" : "ByLookupTypeIsEnabledFinder",
+              "attributes" : [ {
+                "name" : "BindLookupType",
+                "type" : "string",
+                "updatable" : true,
+                "required" : "Optional",
+                "queryable" : false,
+                "allowChanges" : "always"
+              } ]
+            }, {
+              "name" : "PrimaryKey",
+              "attributes" : [ {
+                "name" : "LookupCode",
+                "type" : "string",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 30,
+                "title" : "Lookup Code",
+                "maxLength" : "30",
+                "properties" : {
+                  "DISPLAYWIDTH" : "30"
+                }
+              }, {
+                "name" : "LookupType",
+                "type" : "string",
+                "updatable" : true,
+                "mandatory" : true,
+                "queryable" : true,
+                "allowChanges" : "never",
+                "precision" : 30,
+                "title" : "Lookup Type",
+                "maxLength" : "30",
+                "properties" : {
+                  "DISPLAYWIDTH" : "30"
+                }
+              } ]
+            } ],
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/LookupPVO1",
+              "name" : "self",
+              "kind" : "collection"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourcecollection+json", "application/json" ]
+            } ]
+          },
+          "item" : {
+            "links" : [ {
+              "rel" : "self",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/LookupPVO1/{id}",
+              "name" : "self",
+              "kind" : "item"
+            }, {
+              "rel" : "parent",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}",
+              "name" : "parent",
+              "kind" : "item"
+            }, {
+              "rel" : "canonical",
+              "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/LookupPVO1/{id}",
+              "name" : "canonical",
+              "kind" : "item"
+            } ],
+            "actions" : [ {
+              "name" : "get",
+              "method" : "GET",
+              "responseType" : [ "application/vnd.oracle.adf.resourceitem+json", "application/json" ]
+            } ]
+          },
+          "links" : [ {
+            "rel" : "self",
+            "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/LookupPVO1/describe",
+            "name" : "self",
+            "kind" : "describe"
+          }, {
+            "rel" : "canonical",
+            "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/{id}/child/LookupPVO1/describe",
+            "name" : "canonical",
+            "kind" : "describe"
+          } ]
+        }
+      },
+      "links" : [ {
+        "rel" : "self",
+        "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/describe",
+        "name" : "self",
+        "kind" : "describe"
+      }, {
+        "rel" : "canonical",
+        "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.13.18.08/leads/300100130031199/child/Assessments/describe",
+        "name" : "canonical",
+        "kind" : "describe"
+      }, {
+        "rel" : "lov",
+        "href" : "https://fuscdrmsmc153-fa-ext.us.oracle.com:443/crmRestApi/resources/11.12.0.0/crmBusinessUnits",
+        "name" : "crmBusinessUnits",
+        "kind" : "collection"
+      } ]
+    }
+  }
+}
